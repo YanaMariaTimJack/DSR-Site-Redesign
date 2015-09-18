@@ -4,6 +4,8 @@
 <div class="main">
   <div class="container">
 
+  <h1>YANA MARIA</h1>
+
     <div class="content">
     		<?php get_template_part( 'loop', 'index' );	?>
     </div> <!--/.content -->
