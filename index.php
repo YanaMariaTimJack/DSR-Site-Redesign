@@ -5,6 +5,7 @@
   <div class="container">
 
   <h1>YANA MARIA</h1>
+  <h2>Tim JW</h2>
 
     <div class="content">
     		<?php get_template_part( 'loop', 'index' );	?>
