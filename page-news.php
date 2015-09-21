@@ -6,13 +6,15 @@
 
 get_header();  ?>
 	
-    <?php if (has_post_thumbnail() ) {
-  	 the_post_thumbnail('large', array('class' => 'news-hero'));
- 	} else { ?>
-  	<div class="filler"></div>
-  	<?php	} ?>		
-
-	
+	<figure>
+		<?php if (has_post_thumbnail() ) { 
+			the_post_thumbnail('large', array('class' => 'news-hero'));
+ 			} else { ?>
+  			<div class="filler"></div>
+  		<?php } ?>
+  		<h1><?php the_title(); ?></h1>
+	</figure>
+    			
 <div class="main">
   <div class="container">
 	
