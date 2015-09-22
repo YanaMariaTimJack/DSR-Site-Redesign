@@ -33,16 +33,44 @@ get_header();  ?>
    </div>
 
    <div class="location">
+		
+   		<figure>
+			<?php 
+
+			$location_icon = get_field('location_icon');
+
+			if( !empty($phone_icon) ): ?>
+
+				<img src="<?php echo $location_icon['url']; ?>" alt="<?php echo $location_icon['alt']; ?>" />
+
+			<?php endif; ?>   			
+
+   		</figure>
+
    		<p><?php the_field('address'); ?></p> 
    </div>
 
    <div class="email">
+
+   		<figure>
+			<?php 
+
+			$email_icon = get_field('email_icon');
+
+			if( !empty($phone_icon) ): ?>
+
+				<img src="<?php echo $email_icon['url']; ?>" alt="<?php echo $email_icon['alt']; ?>" />
+
+			<?php endif; ?>   			
+
+   		</figure>
+
    		<p><?php the_field('email'); ?></p>
    </div>
 
 	<h3>Contact form</h3>
 
-	<form class="contact" method="POST" action="////formspree.io/yanatzvetkova@gmail.com">
+	<form method="POST" action="////formspree.io/yanatzvetkova@gmail.com">
 	   	<input type="text" placeholder="name">
 	    <input type="email" name="_replyto" placeholder="email"/>
 	    <input type="text" placeholder="phone">
