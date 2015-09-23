@@ -43,7 +43,7 @@ get_header();  ?>
 
     <?php $instructors = new WP_Query(array(
     'post_type' => 'instructors'
-  )); ?>
+    )); ?>
 
     <?php if ( $instructors -> have_posts() ) while ( $instructors -> have_posts() ) : $instructors -> the_post(); ?>
 
@@ -67,17 +67,25 @@ get_header();  ?>
 
     <?php endwhile; // end the loop?>
 
-
     <?php $faq = new WP_Query(array(
-    'post_type' => 'instructors'
-  )); ?>
+    'post_type' => 'faq'
+    )); ?>
 
-    <?php if ( $faq -> have_posts() ) while ( $faq -> have_posts() ) : $faq -> the_post(); ?>
+    <?php $count = 0; ?>
 
-        <?php  the_field('faq');?>
+    <section class="ac-container">
+      
+      <?php if ( $faq -> have_posts() ) while ( $faq -> have_posts() ) : $faq -> the_post(); ?>
+      
+        <?php $count += 1; ?>
 
-    <?php endwhile; // end the loop?>
-    
+        <input id="ac-<?php echo $count ?>" name="accordion-1" type="radio" />
+        <label for="ac-<?php echo $count ?>"><?php the_title(); ?></label>
+        <article class="ac-expand"><?php the_content(); ?></article>
+
+      <?php endwhile; ?> 
+
+    </section>
 
   </div> <!-- /.container -->
 </div> <!-- /.main -->
