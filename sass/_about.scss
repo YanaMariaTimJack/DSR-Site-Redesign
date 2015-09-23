@@ -1,0 +1,15 @@
+.ac-container input {
+	display: none;
+}
+
+.ac-container label {
+	background:red;
+}
+
+.ac-container article {
+	height: 0px;
+	overflow: hidden;
+}
+.ac-container input:checked ~ article{
+	height:100%;
+}
