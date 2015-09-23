@@ -21,10 +21,20 @@ get_header();  ?>
   )); ?>
 
     <?php if ( $stats -> have_posts() ) while ( $stats -> have_posts() ) : $stats -> the_post(); ?>
-        
-        
+      
+      <figure>
+      <?php 
 
-        <?php  the_field('stat_icon');?>
+      $stat_icon = get_field('stat_icon');
+
+      if( !empty($stat_icon) ): ?>
+
+        <img src="<?php echo $stat_icon['url']; ?>" alt="<?php echo $stat_icon['alt']; ?>" />
+
+      <?php endif; ?>         
+
+      </figure>
+
         <?php  the_field('number');?>
         <?php  the_field('category');?>
     <?php endwhile; // end the loop?>
@@ -37,12 +47,23 @@ get_header();  ?>
 
     <?php if ( $instructors -> have_posts() ) while ( $instructors -> have_posts() ) : $instructors -> the_post(); ?>
 
-        <?php the_post_thumbnail(); ?> 
+          <figure>
+      <?php 
+
+      $instructor_image = get_field('instructor_image');
+
+      if( !empty($instructor_image) ): ?>
+
+        <img src="<?php echo $instructor_image['url']; ?>" alt="<?php echo $instructor_image['alt']; ?>" />
+
+      <?php endif; ?>         
+
+      </figure>
         <?php  the_field('instructor_name');?>
         <?php  the_field('instructor_title');?>
-        <?php  the_field('facebook');?>
-        <?php  the_field('twitter');?>
-      <a href="<?php the_field('facebook_link');?>"> <?php the_field('instagram');?></a>
+      <a href="<?php the_field('facebook_link');?>"> <?php the_field('facebook');?></a>
+      <a href="<?php the_field('twitter_link');?>"> <?php the_field('twitter');?></a>
+      <a href="<?php the_field('instagram_link');?>"> <?php the_field('instagram');?></a>
 
     <?php endwhile; // end the loop?>
 
