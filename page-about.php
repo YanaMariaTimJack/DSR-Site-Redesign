@@ -73,15 +73,25 @@ get_header();  ?>
 
     <?php $count = 0; ?>
 
+    <!-- The counter above starts at 0. The counter starts outside of the loop -->
+
     <section class="ac-container">
       
       <?php if ( $faq -> have_posts() ) while ( $faq -> have_posts() ) : $faq -> the_post(); ?>
+
+        <!-- Inside of the loop, every time a post added, the counter increments by 1 -->
       
         <?php $count += 1; ?>
+        
+        <div>
+          
+          <!-- So, for every faq post on the WP dashboard that is added to the accordion, the id and for will also increment by 1 -->
 
-        <input id="ac-<?php echo $count ?>" name="accordion-1" type="radio" />
-        <label for="ac-<?php echo $count ?>"><?php the_title(); ?></label>
-        <article class="ac-expand"><?php the_content(); ?></article>
+          <input id="ac-<?php echo $count ?>" name="accordion-1" type="radio" />
+          <label for="ac-<?php echo $count ?>"><?php the_title(); ?></label>
+          <article class="ac-expand"><?php the_content(); ?></article>
+        
+        </div>
 
       <?php endwhile; ?> 
 
