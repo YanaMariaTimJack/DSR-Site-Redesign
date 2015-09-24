@@ -24,8 +24,8 @@ get_header();  ?>
 
   </figure>
 
-  <?php the_field('number'); ?>
-  <?php the_field('category') ?>
+  <p><?php the_field('number'); ?></p>
+  <p><?php the_field('category') ?></p>
 
 <?php endwhile; // end the loop?>
 
@@ -39,7 +39,7 @@ get_header();  ?>
 
   <?php if ( $services -> have_posts() ) while ( $services -> have_posts() ) : $services -> the_post(); ?>
 
-    <a href="#" data-fill="">
+    <a href="#" data-full="">
       <figure>
         <?php $service_icon = get_field('service_icon'); ?>
 
@@ -50,7 +50,7 @@ get_header();  ?>
 
       </figure>
       
-      <?php the_field('service_name'); ?>
+      <p><?php the_field('service_name'); ?></p>
     </a>
 
   <?php endwhile; // end the loop?>
