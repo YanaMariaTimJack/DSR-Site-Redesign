@@ -35,8 +35,8 @@ get_header();  ?>
 
       </figure>
 
-        <?php  the_field('number');?>
-        <?php  the_field('category');?>
+        <p><?php  the_field('number');?></p>
+        <p><?php  the_field('category');?></p>
     <?php endwhile; // end the loop?>
 
     <br>
@@ -59,8 +59,8 @@ get_header();  ?>
       <?php endif; ?>         
 
       </figure>
-        <?php  the_field('instructor_name');?>
-        <?php  the_field('instructor_title');?>
+        <p><?php  the_field('instructor_name');?></p>
+        <p><?php  the_field('instructor_title');?></p>
       <a href="<?php the_field('facebook_link');?>"> <?php the_field('facebook');?></a>
       <a href="<?php the_field('twitter_link');?>"> <?php the_field('twitter');?></a>
       <a href="<?php the_field('instagram_link');?>"> <?php the_field('instagram');?></a>

@@ -30,11 +30,16 @@ get_header();  ?>
 			<span class="month-year"><?php the_time('M Y') ?></span>	
 			<!-- could not use the_date() twice on the page, so we used the_time() as a alternative  -->
 
-	  <?php the_content(); ?>
+	  <?php //the_content(); ?>
 
+	  <!-- This gets the first 30 characters from the content in the post -->
+	  <?php echo substr(get_the_excerpt(), 0,30); ?>
+
+	<!-- If a features image has been set, this will post that featured image (post_thumbnail). -->
 	<?php if (has_post_thumbnail() ) {
 	  the_post_thumbnail();
 	  }	else { ?>
+	  <!-- However, if a featured image has not been set, a filler div will be put in its place so that the content around doesn't collapse -->
 	  <div class="filler"></div>
 	<?php	} ?>
 
