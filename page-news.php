@@ -1,10 +1,16 @@
-<?php
+<div class="container">
+	
+	<?php
 
-/*
-	Template Name: News
-*/
+	/*
+		Template Name: News
+	*/ 
 
-get_header();  ?>
+	get_header();  ?>
+	
+</div>
+
+
 	
 	<figure>
 		<?php if (has_post_thumbnail() ) { 
@@ -33,7 +39,7 @@ get_header();  ?>
 	  <?php //the_content(); ?>
 
 	  <!-- This gets the first 30 characters from the content in the post -->
-	  <?php echo substr(get_the_excerpt(), 0,30); ?>
+	  <p><?php echo substr(get_the_excerpt(), 0,30); ?></p>
 
 	<!-- If a features image has been set, this will post that featured image (post_thumbnail). -->
 	<?php if (has_post_thumbnail() ) {
