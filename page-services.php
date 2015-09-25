@@ -39,7 +39,7 @@ get_header();  ?>
 
   <?php if ( $services -> have_posts() ) while ( $services -> have_posts() ) : $services -> the_post(); ?>
 
-    <a href="#" data-full="">
+    <a href="#" style="background:red">
       <figure>
         <?php $service_icon = get_field('service_icon'); ?>
 
@@ -49,7 +49,7 @@ get_header();  ?>
         <?php endif; ?>      
 
       </figure>
-      
+        
       <p><?php the_field('service_name'); ?></p>
     </a>
 
