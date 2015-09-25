@@ -12,22 +12,37 @@ get_header();  ?>
   'post_type' => 'stats'
 )); ?>
 
-<?php if ( $stats -> have_posts() ) while ( $stats -> have_posts() ) : $stats -> the_post(); ?>
+<div class="row clearfix">  
 
-  <figure>
-    <?php $stat_icon = get_field('stat_icon'); ?>
+      <?php if ( $stats -> have_posts() ) while ( $stats -> have_posts() ) : $stats -> the_post(); ?>
+    
+      <div class="col-sm-3 col-xs-6 col-xxs-12">
 
-    <?php if ( !empty($stat_icon)): ?>
-      <img src="<?php echo $stat_icon['url']; ?> " alt="<?php echo $stat_icon['alt']; ?> ">
+        <div class="row">
 
-    <?php endif; ?>      
+          <figure class="col-xs-4">
+            <?php 
 
-  </figure>
+            $stat_icon = get_field('stat_icon');
 
-  <p><?php the_field('number'); ?></p>
-  <p><?php the_field('category') ?></p>
 
-<?php endwhile; // end the loop?>
+            if( !empty($stat_icon) ): ?>
+      
+              <img src="<?php echo $stat_icon['url']; ?>" alt="<?php echo $stat_icon['alt']; ?>" />
+
+            <?php endif; ?>         
+          </figure>
+          <div class="col-xs-8">
+            <p><?php  the_field('number');?></p>
+            <p><?php  the_field('category');?></p>
+          </div>  
+        </div> <!-- Closing sub row inside the column -->
+
+      </div> <!-- Closing column & Overall column layout -->
+
+      <?php endwhile; // end the loop?>
+
+    </div> <!-- closing .row -->
 
 <!-- Services -->
 
