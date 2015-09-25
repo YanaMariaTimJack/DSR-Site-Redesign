@@ -6,7 +6,7 @@
 
 get_header();  ?>
 
-<div class="main">
+
   <div class="container">
 
      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -16,66 +16,98 @@ get_header();  ?>
 
       <?php endwhile; // end the loop?>
 
-          <?php $stats = new WP_Query(array(
-    'post_type' => 'stats'
-  )); ?>
 
-    <?php if ( $stats -> have_posts() ) while ( $stats -> have_posts() ) : $stats -> the_post(); ?>
-      
-      <figure>
-      <?php 
-
-      $stat_icon = get_field('stat_icon');
-
-      if( !empty($stat_icon) ): ?>
-
-        <img src="<?php echo $stat_icon['url']; ?>" alt="<?php echo $stat_icon['alt']; ?>" />
-
-      <?php endif; ?>         
-
-      </figure>
-
-        <p><?php  the_field('number');?></p>
-        <p><?php  the_field('category');?></p>
-    <?php endwhile; // end the loop?>
-
-    <br>
-
-    <?php $instructors = new WP_Query(array(
-    'post_type' => 'instructors'
+ 
+            <?php $stats = new WP_Query(array(
+      'post_type' => 'stats'
     )); ?>
 
-    <?php if ( $instructors -> have_posts() ) while ( $instructors -> have_posts() ) : $instructors -> the_post(); ?>
+     <div class="row clearfix">  
+
+      <?php if ( $stats -> have_posts() ) while ( $stats -> have_posts() ) : $stats -> the_post(); ?>
+    
+      <div class="col-sm-3 col-xs-6 col-xxs-12">
+
+        <div class="row">
+
+          <figure class="col-xs-4">
+            <?php 
+
+            $stat_icon = get_field('stat_icon');
+
+
+            if( !empty($stat_icon) ): ?>
+      
+              <img src="<?php echo $stat_icon['url']; ?>" alt="<?php echo $stat_icon['alt']; ?>" />
+
+            <?php endif; ?>         
+          </figure>
+          <div class="col-xs-8">
+            <p><?php  the_field('number');?></p>
+            <p><?php  the_field('category');?></p>
+          </div>  
+        </div> <!-- Closing sub row inside the column -->
+
+      </div> <!-- Closing column & Overall column layout -->
+
+      <?php endwhile; // end the loop?>
+
+    </div> <!-- closing .row -->
+
+    
+
+     <?php $instructors = new WP_Query(array(
+      'post_type' => 'instructors'
+      )); ?>
+
+  <div class="row clearfix">
+        <?php if ( $instructors -> have_posts() ) while ( $instructors -> have_posts() ) : $instructors -> the_post(); ?>
+
+          <div class="col-sm-3 col-xs-6 col-xxs-12">
 
           <figure>
-      <?php 
+            <?php 
 
-      $instructor_image = get_field('instructor_image');
+            $instructor_image = get_field('instructor_image');
 
-      if( !empty($instructor_image) ): ?>
+            if( !empty($instructor_image) ): ?>
 
-        <img src="<?php echo $instructor_image['url']; ?>" alt="<?php echo $instructor_image['alt']; ?>" />
+              <img src="<?php echo $instructor_image['url']; ?>" alt="<?php echo $instructor_image['alt']; ?>" />
 
-      <?php endif; ?>         
+            <?php endif; ?>   
 
-      </figure>
-        <p><?php  the_field('instructor_name');?></p>
-        <p><?php  the_field('instructor_title');?></p>
-      <a href="<?php the_field('facebook_link');?>"> <?php the_field('facebook');?></a>
-      <a href="<?php the_field('twitter_link');?>"> <?php the_field('twitter');?></a>
-      <a href="<?php the_field('instagram_link');?>"> <?php the_field('instagram');?></a>
+          </figure>
 
-    <?php endwhile; // end the loop?>
+
+          <p><?php  the_field('instructor_name');?></p>
+          <p><?php  the_field('instructor_title');?></p>
+
+            <div class="social-icons">
+              <a href="<?php the_field('facebook_link');?>"> <?php the_field('facebook');?></a>
+              <a href="<?php the_field('twitter_link');?>"> <?php the_field('twitter');?></a>
+              <a href="<?php the_field('instagram_link');?>"> <?php the_field('instagram');?></a>
+            </div>  
+
+          </div> <!-- closing column -->
+
+      <?php endwhile; // end the loop?>
+
+  </div> <!-- end of .row  -->   
 
     <?php $faq = new WP_Query(array(
     'post_type' => 'faq'
     )); ?>
 
+
+
     <?php $count = 0; ?>
 
     <!-- The counter above starts at 0. The counter starts outside of the loop -->
 
-    <section class="ac-container">
+
+    <section class="row clearfix ac-container">
+
+    <div class="col-xs-12">
       
       <?php if ( $faq -> have_posts() ) while ( $faq -> have_posts() ) : $faq -> the_post(); ?>
 
@@ -94,10 +126,10 @@ get_header();  ?>
         </div>
 
       <?php endwhile; ?> 
-
-    </section>
-
-  </div> <!-- /.container -->
-</div> <!-- /.main -->
+      </div>
+  </section>
+ 
+ 
+ </div>  <!--   container end   --> 
 
 <?php get_footer(); ?>
