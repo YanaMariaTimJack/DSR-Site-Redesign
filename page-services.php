@@ -59,12 +59,13 @@ get_header();  ?>
 
       <?php if ( $services -> have_posts() ) while ( $services -> have_posts() ) : $services -> the_post(); ?>
 
-        <a href="#" data-icon="<?php echo $service_icon['url']; ?>" data-alt="<?php echo $service_icon['alt']; ?>" data-title="<?php the_field('service_name'); ?>" data-desc="<?php the_field('service_desc'); ?>"> 
-          <figure>
-            <?php $service_icon = get_field('service_icon'); ?>
+        <?php $service_icon = get_field('service_icon'); ?>
 
+        <a href="#" data-src="<?php echo $service_icon['url']; ?>" data-alt="<?php echo $service_icon['alt']; ?>" data-title="<?php the_field('service_name'); ?>" data-desc="<?php the_field('service_desc'); ?>" class="clearfix"> 
+          <figure>
+            
             <?php if ( !empty($service_icon)): ?>
-              <img src="<?php echo $service_icon['url']; ?> " alt="<?php echo $service_icon['alt']; ?> ">
+              <img src="<?php echo $service_icon['url']; ?>" alt="<?php echo $service_icon['alt']; ?>">
 
             <?php endif; ?>      
 
@@ -83,13 +84,13 @@ get_header();  ?>
 
       <figure>
         <?php if ( !empty($service_icon)): ?>
-          <img src="" alt="">
+          <img src="<?php echo $service_icon['url']; ?>" alt="<?php echo $service_icon['alt']; ?>">
 
         <?php endif; ?>
       </figure>
 
-      <h3></h3>
-      <p></p>
+      <h3><?php the_field('service_name'); ?></h3>
+      <p><?php the_field('service_desc'); ?></p>
      
     </div> <!-- end of .full -->
 
