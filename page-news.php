@@ -10,8 +10,6 @@
 	
 </div>
 
-
-	
 	<figure>
 		<?php if (has_post_thumbnail() ) { 
 			the_post_thumbnail('large', array('class' => 'news-hero'));
@@ -27,22 +25,22 @@
 		'post_type' => 'news'
 	)); ?>
 
+	<!-- If we put the row inside of the if statement, every time it looped through the news posts, it would create another row. -->
+
 	<div class="row clearfix">
 		
 			<?php if ( $news -> have_posts() ) while ( $news -> have_posts() ) : $news -> the_post(); ?>
 			<div class="col-xs-4">	
-
+				
+				<!-- could not use the_date() twice on the page, so we used the_time() as a alternative  -->
 				<span class="date"><?php the_date('d');?></span>	
 				<span class="month-year"><?php the_time('M Y') ?></span>			
 				<h2><?php the_title(); ?></h2>
-				<!-- could not use the_date() twice on the page, so we used the_time() as a alternative  -->
 
-			  <?php //the_content(); ?>
-
-			  <!-- This gets the first 30 characters from the content in the post -->
+			  <!-- This gets the first # of characters from the content in the post -->
 			  <p><?php echo substr(get_the_excerpt(), 0,30); ?></p>
 
-			<!-- If a features image has been set, this will post that featured image (post_thumbnail). -->
+			<!-- If a features image has been set, this will post that featured image (post_thumbnail) -->
 			<?php if (has_post_thumbnail() ) {
 			  the_post_thumbnail();
 			  }	else { ?>

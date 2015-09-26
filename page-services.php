@@ -6,7 +6,7 @@
 
 get_header();  ?>
 
-<!-- Stats counter -->
+<!-- STATS COUNTER -->
 
 <?php $stats = new WP_Query(array(
   'post_type' => 'stats'
@@ -47,7 +47,7 @@ get_header();  ?>
 
   </div> <!-- closing .row -->
 
-  <!-- Services -->
+<!-- SERVICES jQuery Gallery-->
 
   <div class="row clearfix">
 
@@ -59,9 +59,10 @@ get_header();  ?>
 
       <?php if ( $services -> have_posts() ) while ( $services -> have_posts() ) : $services -> the_post(); ?>
 
-        <?php $service_icon = get_field('service_icon'); ?>
+      <?php $service_icon = get_field('service_icon'); ?>
 
         <a href="#" data-src="<?php echo $service_icon['url']; ?>" data-alt="<?php echo $service_icon['alt']; ?>" data-title="<?php the_field('service_name'); ?>" data-desc="<?php the_field('service_desc'); ?>" class="clearfix"> 
+          
           <figure>
             
             <?php if ( !empty($service_icon)): ?>
@@ -79,6 +80,8 @@ get_header();  ?>
     </div> <!-- end of .previews -->
 
     <div class="full col-xs-9">
+
+      <!-- The reason that we have fields set here is because we need one to be displayed by default on load. Once the user clicks one of the other services links, all these fields will be updated with the data from the data-attributes that correspond to the clicked service -->
 
       <?php $service_icon = get_field('service_icon'); ?>
 
