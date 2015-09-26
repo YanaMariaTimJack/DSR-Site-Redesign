@@ -6,9 +6,10 @@
 
 get_header();  ?>
 
+<!-- ABOUT US DESCRIPTION -->
 
   <div class="container">
-
+      
      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
         <h2><?php the_title(); ?></h2>
@@ -16,9 +17,9 @@ get_header();  ?>
 
       <?php endwhile; // end the loop?>
 
+<!-- STATS COUNTER -->
 
- 
-            <?php $stats = new WP_Query(array(
+    <?php $stats = new WP_Query(array(
       'post_type' => 'stats'
     )); ?>
 
@@ -35,6 +36,13 @@ get_header();  ?>
 
             $stat_icon = get_field('stat_icon');
 
+            // If the user has not uploaded an image to the custom field, no icon can or will be displayed
+
+            // If they have uploaded an image, and the_field('stat_icon') is NOT (!) empty, then the icon will be displayed 
+
+            // If, when setting up a custom image field (using the ACF plugin), and we set the return value as Image Object, we have to use this convention for calling it onto the page. 
+
+            // More info can be found on the Image section of the ACF Documentation page here: http://www.advancedcustomfields.com/resources/image/
 
             if( !empty($stat_icon) ): ?>
       
@@ -42,10 +50,12 @@ get_header();  ?>
 
             <?php endif; ?>         
           </figure>
+
           <div class="col-xs-8">
             <p><?php  the_field('number');?></p>
             <p><?php  the_field('category');?></p>
           </div>  
+
         </div> <!-- Closing sub row inside the column -->
 
       </div> <!-- Closing column & Overall column layout -->
@@ -54,7 +64,7 @@ get_header();  ?>
 
     </div> <!-- closing .row -->
 
-    
+<!-- INSTRUCTORS     -->
 
      <?php $instructors = new WP_Query(array(
       'post_type' => 'instructors'
@@ -98,12 +108,9 @@ get_header();  ?>
     'post_type' => 'faq'
     )); ?>
 
-
-
-    <?php $count = 0; ?>
-
     <!-- The counter above starts at 0. The counter starts outside of the loop -->
-
+    
+    <?php $count = 0; ?>
 
     <section class="row clearfix ac-container">
 
@@ -111,7 +118,7 @@ get_header();  ?>
       
       <?php if ( $faq -> have_posts() ) while ( $faq -> have_posts() ) : $faq -> the_post(); ?>
 
-        <!-- Inside of the loop, every time a post added, the counter increments by 1 -->
+        <!-- Inside of the loop, every time a post is added, the counter increments by 1 -->
       
         <?php $count += 1; ?>
         
@@ -128,7 +135,6 @@ get_header();  ?>
       <?php endwhile; ?> 
       </div>
   </section>
- 
  
  </div>  <!--   container end   --> 
 
